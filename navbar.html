@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #nav{
+            display: flex;
+            padding: 10px;
+            background-color: antiquewhite;
+            font-size: 30px;
+            justify-content: space-around;
+            /* text-decoration: none; */
+            
+        }
+        #nav>div>a{
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="nav">
+        <div>Backend</div>
+        <div><a href="frontend.html">frontend</a></div>
+    </div>
+    <form id="form" action="">
+        <input id="forimg" type="url" placeholder="Enter URL">
+        <input id="forname" type="text" placeholder="Enter name">
+        <input id="forrole" type="text" placeholder="Enter role">
+        <input id="forlogo" type="url" placeholder="Enter URL">
+        <input type="submit">
+    </form>
+</body>
+</html>
+<script>
+    document.querySelector("#form").addEventListener("submit",inversterfun);
+
+    var arr ;
+    // console.log
+    
+    if(JSON.parse(localStorage.getItem("investerdata"))==null){
+        arr=[];
+        // console.log(arr)
+    }
+    else{
+        arr=JSON.parse(localStorage.getItem("investerdata"))
+    }
+
+    function inversterfun(){
+        event.preventDefault()
+         
+        var obj = {
+            inverurl:document.querySelector("#forimg").value,
+            invername:document.querySelector("#forname").value,
+            inverrole:document.querySelector("#forrole").value,
+            inverlogo:document.querySelector("#forlogo").value
+        };
+        // console.log(obj)
+        arr.push(obj)
+        console.log(arr)
+        localStorage.setItem("investerdata",JSON.stringify(arr))
+    }
+</script>
